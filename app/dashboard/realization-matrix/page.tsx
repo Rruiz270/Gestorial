@@ -190,8 +190,22 @@ export default function RealizationMatrixPage() {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-lg bg-${section.color}-100`}>
-                      <Icon className={`h-5 w-5 text-${section.color}-600`} />
+                    <div className={`p-2 rounded-lg ${
+                      section.color === 'blue' ? 'bg-blue-100' :
+                      section.color === 'purple' ? 'bg-purple-100' :
+                      section.color === 'green' ? 'bg-green-100' :
+                      section.color === 'orange' ? 'bg-orange-100' :
+                      section.color === 'red' ? 'bg-red-100' :
+                      section.color === 'indigo' ? 'bg-indigo-100' : 'bg-gray-100'
+                    }`}>
+                      <Icon className={`h-5 w-5 ${
+                        section.color === 'blue' ? 'text-blue-600' :
+                        section.color === 'purple' ? 'text-purple-600' :
+                        section.color === 'green' ? 'text-green-600' :
+                        section.color === 'orange' ? 'text-orange-600' :
+                        section.color === 'red' ? 'text-red-600' :
+                        section.color === 'indigo' ? 'text-indigo-600' : 'text-gray-600'
+                      }`} />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gestorial-dark">

@@ -48,8 +48,18 @@ export default function DashboardPage() {
             </p>
           )}
         </div>
-        <div className={`p-3 rounded-lg bg-${color}/10`}>
-          <Icon className={`h-6 w-6 text-${color}`} />
+        <div className={`p-3 rounded-lg ${
+          color === 'gestorial-primary' ? 'bg-blue-100' :
+          color === 'green-600' ? 'bg-green-100' :
+          color === 'purple-600' ? 'bg-purple-100' :
+          color === 'blue-600' ? 'bg-blue-100' : 'bg-gray-100'
+        }`}>
+          <Icon className={`h-6 w-6 ${
+            color === 'gestorial-primary' ? 'text-blue-600' :
+            color === 'green-600' ? 'text-green-600' :
+            color === 'purple-600' ? 'text-purple-600' :
+            color === 'blue-600' ? 'text-blue-600' : 'text-gray-600'
+          }`} />
         </div>
       </div>
     </div>
