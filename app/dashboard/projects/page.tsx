@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { DataService } from '@/lib/data';
 import { AuthService } from '@/lib/auth';
-import { FolderOpen, Plus, Calendar, DollarSign, Users } from 'lucide-react';
+import { FolderOpen, Plus, Calendar, DollarSign, Users, Edit3 } from 'lucide-react';
 
 export default function ProjectsPage() {
   const projects = DataService.getProjects();
@@ -89,13 +89,20 @@ export default function ProjectsPage() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-gray-200">
+                <div className="pt-3 border-t border-gray-200 flex items-center justify-between">
                   <Link 
                     href={`/dashboard/projects/${project.id}`}
-                    className="text-gestorial-primary hover:text-gestorial-secondary font-medium text-sm"
+                    className="text-gestorial-primary hover:text-gestorial-secondary font-medium text-sm transition-colors"
                   >
                     View Details →
                   </Link>
+                  {canEdit && (
+                    <div className="flex items-center space-x-2">
+                      <button className="text-gray-400 hover:text-gestorial-primary transition-colors">
+                        <Edit3 className="h-4 w-4" />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

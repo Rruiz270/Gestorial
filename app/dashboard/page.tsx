@@ -128,41 +128,43 @@ export default function DashboardPage() {
             const progress = Math.round((project.currentSpent / project.budget) * 100);
             
             return (
-              <div key={project.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="font-semibold text-gestorial-dark">{project.name}</h3>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[project.status]}`}>
-                        {project.status.replace('_', ' ')}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 text-sm mb-2">{company?.name}</p>
-                    <p className="text-gray-500 text-sm">{project.description}</p>
-                    
-                    {/* Progress bar */}
-                    <div className="mt-3">
-                      <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="text-gray-600">Budget Progress</span>
-                        <span className="font-medium">{progress}%</span>
+              <Link key={project.id} href={`/dashboard/projects/${project.id}`}>
+                <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <h3 className="font-semibold text-gestorial-dark">{project.name}</h3>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[project.status]}`}>
+                          {project.status.replace('_', ' ')}
+                        </span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-gestorial-primary h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${Math.min(progress, 100)}%` }}
-                        ></div>
+                      <p className="text-gray-600 text-sm mb-2">{company?.name}</p>
+                      <p className="text-gray-500 text-sm">{project.description}</p>
+                      
+                      {/* Progress bar */}
+                      <div className="mt-3">
+                        <div className="flex items-center justify-between text-sm mb-1">
+                          <span className="text-gray-600">Budget Progress</span>
+                          <span className="font-medium">{progress}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-gestorial-primary h-2 rounded-full transition-all duration-300"
+                            style={{ width: `${Math.min(progress, 100)}%` }}
+                          ></div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="ml-4 text-right">
-                    <p className="text-sm text-gray-500">Budget</p>
-                    <p className="font-semibold">${(project.budget / 1000).toFixed(0)}k</p>
-                    <p className="text-xs text-gray-400 mt-1">
-                      Spent: ${(project.currentSpent / 1000).toFixed(0)}k
-                    </p>
+                    <div className="ml-4 text-right">
+                      <p className="text-sm text-gray-500">Budget</p>
+                      <p className="font-semibold">${(project.budget / 1000).toFixed(0)}k</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Spent: ${(project.currentSpent / 1000).toFixed(0)}k
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
